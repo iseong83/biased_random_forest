@@ -56,7 +56,7 @@ def main(args):
     sns_plot.savefig(join(path, 'sns_plot_after_preprocess_test.png'))
 
     # normalized dataset inplace
-    #means, stds = normalize_dataset(df_train, df_test, target_name, columns_missing_values)
+    # means, stds = normalize_dataset(df_train, df_test, target_name, columns_missing_values)
     means, std = min_max_normalize_dataset(df_train, df_test, target_name, columns_missing_values)
 
 
@@ -70,7 +70,8 @@ def main(args):
     k = args.k
     p = args.p
     s = args.s
-    # braf = BRAF(data, s, p, minor_class, max_depth, min_size, sample_size, n_features)
+    # For a single run
+    ##braf = BRAF(data, s, p, k, minor_class, max_depth, min_size, sample_size, n_features)
     #braf = BRAF(train_set, s, p, k, minor_class)
     #braf.fit()
 

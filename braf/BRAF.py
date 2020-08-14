@@ -33,13 +33,13 @@ class BRAF(ForestBase):
         if not self.args:
             # set default args
             # max depth, min size, sample size, n_features
-            self.args = (5, 1, 1.0, len(dataset[0])-1)
+            self.args = (4, 1, 1.0, len(dataset[0])-1)
 
         minor_data = dataset[dataset[:,-1]==self.minor_class]
         major_data = dataset[dataset[:,-1]!=self.minor_class]
         print('Number of major class: {}, number of minor class: {}'.format(len(major_data), len(minor_data)))
 
-        k_neighbors = KNN.get_k_neighbors(minor_data, major_data, k = k)
+        k_neighbors = KNN.get_k_neighbors(minor_data[:,:-1], major_data[:,:-1], k = k)
         critical_data = major_data[list(set(k_neighbors.flatten()))]
         critical_data = np.concatenate([minor_data, critical_data], axis=0)
         print('Defined and stored critical dataset: {}'.format(len(critical_data)))
@@ -49,7 +49,7 @@ class BRAF(ForestBase):
         RF1 = RandomForestClassifier(dataset, int(self.s*(1.0-self.p)), *self.args)
         RF1.fit()
         print('Creating a second forest on the critical data set of size {}'.format(int(self.s*self.p)))
-        RF2 = RandomForestClassifier(dataset, int(self.s*self.p), *self.args)
+        RF2 = RandomForestClassifier(critical_data, int(self.s*self.p), *self.args)
         RF2.fit()
 
         # Combine the two forests to generate the main forest

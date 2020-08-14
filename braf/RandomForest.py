@@ -68,7 +68,7 @@ class RandomForestClassifier(ForestBase):
         self.n_trees = n_trees
         self.max_depth = max_depth
         self.min_size = min_size
-        self.sample_size =  sample_size
+        self.sample_size = sample_size
         self.n_features = n_features
 
     def fit(self):
