@@ -14,11 +14,11 @@ with optional command-line arguments
 -n_folds (int, default=10): number of folds for CV
 -plot (str, default='./plots'): a path to store plots
 ```
-Summary of results with K = 10, p = 0.5, s = 100
+Summary of results with k = 10, p = 0.5, s = 100
 ```
-Train set Results:
-Accuracy: 66.07  Precision: 49.17  Recall: 4.33  AUPRC: 0.63  AUROC: 0.80
-Test set Results:
-Accuracy: 65.65  Precision: 55.67  Recall: 5.56  AUPRC: 0.65  AUROC: 0.82
+Trainset Results:
+Accuracy: 67.05  Precision: 60.00  Recall: 6.61  AUPRC: 0.65  AUROC: 0.82
+Testset Results:
+Accuracy: 65.71  Precision: 66.98  Recall: 5.19  AUPRC: 0.66  AUROC: 0.83
 ```
 Plots are stored in `./plots`. 
